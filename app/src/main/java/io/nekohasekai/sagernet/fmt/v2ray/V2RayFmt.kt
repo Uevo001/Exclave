@@ -535,13 +535,7 @@ fun parseV2Ray(link: String): StandardV2RayBean {
             throw e
         }
     }
-
-    if (bean.security == "reality") {
-        when (bean.type) {
-            "tcp", "http", "grpc", "splithttp" -> {}
-            else -> error("reality does not support ${bean.type}")
-        }
-    }
+    
     if (bean is VLESSBean && bean.security != "none" && bean.flow == "xtls-rprx-vision-udp443"
         && bean.type != "tcp" && bean.encryption == "none") {
         error("vision does not support ${bean.type}")
