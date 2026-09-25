@@ -376,17 +376,6 @@ fun parseSingBoxOutbound(outbound: JsonObject): List<AbstractBean> {
                     }
                 }
             }
-            if (v2rayBean.security == "reality") {
-                when (v2rayBean.type) {
-                    null, "tcp", "http", "grpc", "splithttp" -> {}
-                    else -> return listOf()
-                }
-            }
-            if (v2rayBean is VLESSBean && v2rayBean.flow == "xtls-rprx-vision-udp443"
-                && v2rayBean.security != null && v2rayBean.security != "none"
-                && v2rayBean.type != null && v2rayBean.type != "tcp") {
-                return listOf()
-            }
             return listOf(v2rayBean)
         }
         "hysteria2" -> {
