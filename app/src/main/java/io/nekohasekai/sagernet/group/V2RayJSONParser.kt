@@ -1039,16 +1039,6 @@ fun parseV2RayOutbound(outbound: JsonObject): List<AbstractBean> {
                     }
                 }
             }
-            if (v2rayBean.security == "reality") {
-                when (v2rayBean.type) {
-                    "tcp", "http", "grpc", "splithttp" -> {}
-                    else -> return listOf()
-                }
-            }
-            if (v2rayBean is VLESSBean && v2rayBean.security != "none"&& v2rayBean.flow == "xtls-rprx-vision-udp443"
-                && v2rayBean.type != "tcp" && v2rayBean.encryption == "none") {
-                return listOf()
-            }
             return listOf(v2rayBean)
         }
         "hysteria2" -> {
